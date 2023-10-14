@@ -1,33 +1,43 @@
-/**
- * Generate URL-friendly unique ID. This method uses the non-secure
- * predictable random generator with bigger collision probability.
- *
- * ```js
- * import { nanoid } from 'nanoid/non-secure'
- * model.id = nanoid() //=> "Uakgb_J5m9g-0JDMbcJqL"
- * ```
- *
- * @param size Size of the ID. The default size is 21.
- * @returns A random string.
- */
-export function nanoid(size?: number): string
+// TypeScript Version: 3.2
 
-/**
- * Generate a unique ID based on a custom alphabet.
- * This method uses the non-secure predictable random generator
- * with bigger collision probability.
- *
- * @param alphabet Alphabet used to generate the ID.
- * @param defaultSize Size of the ID. The default size is 21.
- * @returns A random string generator.
- *
- * ```js
- * import { customAlphabet } from 'nanoid/non-secure'
- * const nanoid = customAlphabet('0123456789абвгдеё', 5)
- * model.id = //=> "8ё56а"
- * ```
- */
-export function customAlphabet(
-  alphabet: string,
-  defaultSize?: number
-): (size?: number) => string
+/// <reference types="node" lib="esnext" />
+
+import * as fs from 'fs';
+import { Readable } from 'stream';
+
+declare namespace readdir {
+  interface EntryInfo {
+    path: string;
+    fullPath: string;
+    basename: string;
+    stats?: fs.Stats;
+    dirent?: fs.Dirent;
+  }
+
+  interface ReaddirpOptions {
+    root?: string;
+    fileFilter?: string | string[] | ((entry: EntryInfo) => boolean);
+    directoryFilter?: string | string[] | ((entry: EntryInfo) => boolean);
+    type?: 'files' | 'directories' | 'files_directories' | 'all';
+    lstat?: boolean;
+    depth?: number;
+    alwaysStat?: boolean;
+  }
+
+  interface ReaddirpStream extends Readable, AsyncIterable<EntryInfo> {
+    read(): EntryInfo;
+    [Symbol.asyncIterator](): AsyncIterableIterator<EntryInfo>;
+  }
+
+  function promise(
+    root: string,
+    options?: ReaddirpOptions
+  ): Promise<EntryInfo[]>;
+}
+
+declare function readdir(
+  root: string,
+  options?: readdir.ReaddirpOptions
+): readdir.ReaddirpStream;
+
+export = readdir;
