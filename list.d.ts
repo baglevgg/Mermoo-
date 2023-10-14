@@ -1,51 +1,54 @@
-export type List = {
+import {List} from 'immutable';
+
+import {Value} from './index';
+
+/**
+ * Possible separators used by Sass lists. The special separator `null` is only
+ * used for lists with fewer than two elements, and indicates that the separator
+ * has not yet been decided for this list.
+ *
+ * @category Custom Function
+ */
+export type ListSeparator = ',' | '/' | ' ' | null;
+
+/**
+ * Sass's [list type](https://sass-lang.com/documentation/values/lists).
+ *
+ * @category Custom Function
+ */
+export class SassList extends Value {
   /**
-   * Safely splits values.
+   * Creates a new list.
    *
-   * ```js
-   * Once (root, { list }) {
-   *   list.split('1px calc(10% + 1px)', [' ', '\n', '\t']) //=> ['1px', 'calc(10% + 1px)']
-   * }
-   * ```
+   * @param contents - The contents of the list. This may be either a plain
+   * JavaScript array or an immutable [[List]] from the [`immutable`
+   * package](https://immutable-js.com/).
    *
-   * @param string separated values.
-   * @param separators array of separators.
-   * @param last boolean indicator.
-   * @return Split values.
+   * @param options.separator - The separator to use between elements of this
+   * list. Defaults to `','`.
+   *
+   * @param options.brackets - Whether the list has square brackets. Defaults to
+   * `false`.
    */
-  split(string: string, separators: string[], last: boolean): string[]
-  /**
-   * Safely splits space-separated values (such as those for `background`,
-   * `border-radius`, and other shorthand properties).
-   *
-   * ```js
-   * Once (root, { list }) {
-   *   list.space('1px calc(10% + 1px)') //=> ['1px', 'calc(10% + 1px)']
-   * }
-   * ```
-   *
-   * @param str Space-separated values.
-   * @return Split values.
-   */
-  space(str: string): string[]
+  constructor(
+    contents: Value[] | List<Value>,
+    options?: {
+      separator?: ListSeparator;
+      brackets?: boolean;
+    }
+  );
 
   /**
-   * Safely splits comma-separated values (such as those for `transition-*`
-   * and `background` properties).
+   * Creates an empty list.
    *
-   * ```js
-   * Once (root, { list }) {
-   *   list.comma('black, linear-gradient(white, black)')
-   *   //=> ['black', 'linear-gradient(white, black)']
-   * }
-   * ```
+   * @param options.separator - The separator to use between elements of this
+   * list. Defaults to `','`.
    *
-   * @param str Comma-separated values.
-   * @return Split values.
+   * @param options.brackets - Whether the list has square brackets. Defaults to
+   * `false`.
    */
-  comma(str: string): string[]
+  constructor(options?: {separator?: ListSeparator; brackets?: boolean});
+
+  /** @hidden */
+  get separator(): ListSeparator;
 }
-
-declare const list: List
-
-export default list
