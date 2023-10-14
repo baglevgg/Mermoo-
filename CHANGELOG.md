@@ -1,184 +1,110 @@
-# Release history
+### [5.1.2](https://github.com/gulpjs/glob-parent/compare/v5.1.1...v5.1.2) (2021-03-06)
 
-All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
-and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
+### Bug Fixes
 
-<details>
-  <summary><strong>Guiding Principles</strong></summary>
+* eliminate ReDoS ([#36](https://github.com/gulpjs/glob-parent/issues/36)) ([f923116](https://github.com/gulpjs/glob-parent/commit/f9231168b0041fea3f8f954b3cceb56269fc6366))
 
-- Changelogs are for humans, not machines.
-- There should be an entry for every single version.
-- The same types of changes should be grouped.
-- Versions and sections should be linkable.
-- The latest version comes first.
-- The release date of each versions is displayed.
-- Mention whether you follow Semantic Versioning.
+### [5.1.1](https://github.com/gulpjs/glob-parent/compare/v5.1.0...v5.1.1) (2021-01-27)
 
-</details>
 
-<details>
-  <summary><strong>Types of changes</strong></summary>
+### Bug Fixes
 
-Changelog entries are classified using the following labels _(from [keep-a-changelog](http://keepachangelog.com/)_):
+* unescape exclamation mark ([#26](https://github.com/gulpjs/glob-parent/issues/26)) ([a98874f](https://github.com/gulpjs/glob-parent/commit/a98874f1a59e407f4fb1beb0db4efa8392da60bb))
 
-- `Added` for new features.
-- `Changed` for changes in existing functionality.
-- `Deprecated` for soon-to-be removed features.
-- `Removed` for now removed features.
-- `Fixed` for any bug fixes.
-- `Security` in case of vulnerabilities.
+## [5.1.0](https://github.com/gulpjs/glob-parent/compare/v5.0.0...v5.1.0) (2021-01-27)
 
-</details>
 
-## [3.0.0] - 2018-04-08
+### Features
 
-v3.0 is a complete refactor, resulting in a faster, smaller codebase, with fewer deps, and a more accurate parser and compiler. 
+* add `flipBackslashes` option to disable auto conversion of slashes (closes [#24](https://github.com/gulpjs/glob-parent/issues/24)) ([#25](https://github.com/gulpjs/glob-parent/issues/25)) ([eecf91d](https://github.com/gulpjs/glob-parent/commit/eecf91d5e3834ed78aee39c4eaaae654d76b87b3))
 
-**Breaking Changes**
+## [5.0.0](https://github.com/gulpjs/glob-parent/compare/v4.0.0...v5.0.0) (2021-01-27)
 
-- The undocumented `.makeRe` method was removed
 
-**Non-breaking changes**
+### ⚠ BREAKING CHANGES
 
-- Caching was removed
+* Drop support for node <6 & bump dependencies
 
-## [2.3.2] - 2018-04-08
+### Miscellaneous Chores
 
-- start refactoring
-- cover sets
-- better range handling
+* Drop support for node <6 & bump dependencies ([896c0c0](https://github.com/gulpjs/glob-parent/commit/896c0c00b4e7362f60b96e7fc295ae929245255a))
 
-## [2.3.1] - 2018-02-17
+## [4.0.0](https://github.com/gulpjs/glob-parent/compare/v3.1.0...v4.0.0) (2021-01-27)
 
-- Remove unnecessary escape in Regex. (#14)
 
-## [2.3.0] - 2017-10-19
+### ⚠ BREAKING CHANGES
 
-- minor code reorganization
-- optimize regex
-- expose `maxLength` option
+* question marks are valid path characters on Windows so avoid flagging as a glob when alone
+* Update is-glob dependency
 
-## [2.2.1] - 2017-05-30
+### Features
 
-- don't condense when braces contain extglobs
+* hoist regexps and strings for performance gains ([4a80667](https://github.com/gulpjs/glob-parent/commit/4a80667c69355c76a572a5892b0f133c8e1f457e))
+* question marks are valid path characters on Windows so avoid flagging as a glob when alone ([2a551dd](https://github.com/gulpjs/glob-parent/commit/2a551dd0dc3235e78bf3c94843d4107072d17841))
+* Update is-glob dependency ([e41fcd8](https://github.com/gulpjs/glob-parent/commit/e41fcd895d1f7bc617dba45c9d935a7949b9c281))
 
-## [2.2.0] - 2017-05-28
+## [3.1.0](https://github.com/gulpjs/glob-parent/compare/v3.0.1...v3.1.0) (2021-01-27)
 
-- ensure word boundaries are preserved
-- fixes edge case where extglob characters precede a brace pattern
 
-## [2.1.1] - 2017-04-27
+### Features
 
-- use snapdragon-node
-- handle edge case
-- optimizations, lint
+* allow basic win32 backslash use ([272afa5](https://github.com/gulpjs/glob-parent/commit/272afa5fd070fc0f796386a5993d4ee4a846988b))
+* handle extglobs (parentheses) containing separators ([7db1bdb](https://github.com/gulpjs/glob-parent/commit/7db1bdb0756e55fd14619e8ce31aa31b17b117fd))
+* new approach to braces/brackets handling ([8269bd8](https://github.com/gulpjs/glob-parent/commit/8269bd89290d99fac9395a354fb56fdcdb80f0be))
+* pre-process braces/brackets sections ([9ef8a87](https://github.com/gulpjs/glob-parent/commit/9ef8a87f66b1a43d0591e7a8e4fc5a18415ee388))
+* preserve escaped brace/bracket at end of string ([8cfb0ba](https://github.com/gulpjs/glob-parent/commit/8cfb0ba84202d51571340dcbaf61b79d16a26c76))
 
-## [2.0.4] - 2017-04-11
 
-- pass opts to compiler
-- minor optimization in create method
-- re-write parser handlers to remove negation regex
+### Bug Fixes
 
-## [2.0.3] - 2016-12-10
+* trailing escaped square brackets ([99ec9fe](https://github.com/gulpjs/glob-parent/commit/99ec9fecc60ee488ded20a94dd4f18b4f55c4ccf))
 
-- use split-string
-- clear queue at the end
-- adds sequences example
-- add unit tests
+### [3.0.1](https://github.com/gulpjs/glob-parent/compare/v3.0.0...v3.0.1) (2021-01-27)
 
-## [2.0.2] - 2016-10-21
 
-- fix comma handling in nested extglobs
+### Features
 
-## [2.0.1] - 2016-10-20
+* use path-dirname ponyfill ([cdbea5f](https://github.com/gulpjs/glob-parent/commit/cdbea5f32a58a54e001a75ddd7c0fccd4776aacc))
 
-- add comments
-- more tests, ensure quotes are stripped
 
-## [2.0.0] - 2016-10-19
+### Bug Fixes
 
-- don't expand braces inside character classes
-- add quantifier pattern
+* unescape glob-escaped dirnames on output ([598c533](https://github.com/gulpjs/glob-parent/commit/598c533bdf49c1428bc063aa9b8db40c5a86b030))
 
-## [1.8.5] - 2016-05-21
+## [3.0.0](https://github.com/gulpjs/glob-parent/compare/v2.0.0...v3.0.0) (2021-01-27)
 
-- Refactor (#10)
 
-## [1.8.4] - 2016-04-20
+### ⚠ BREAKING CHANGES
 
-- fixes https://github.com/jonschlinkert/micromatch/issues/66
+* update is-glob dependency
 
-## [1.8.0] - 2015-03-18
+### Features
 
-- adds exponent examples, tests
-- fixes the first example in https://github.com/jonschlinkert/micromatch/issues/38
+* update is-glob dependency ([5c5f8ef](https://github.com/gulpjs/glob-parent/commit/5c5f8efcee362a8e7638cf8220666acd8784f6bd))
 
-## [1.6.0] - 2015-01-30
+## [2.0.0](https://github.com/gulpjs/glob-parent/compare/v1.3.0...v2.0.0) (2021-01-27)
 
-- optimizations, `bash` mode:
-- improve path escaping
 
-## [1.5.0] - 2015-01-28
+### Features
 
-- Merge pull request #5 from eush77/lib-files
+* move up to dirname regardless of glob characters ([f97fb83](https://github.com/gulpjs/glob-parent/commit/f97fb83be2e0a9fc8d3b760e789d2ecadd6aa0c2))
 
-## [1.4.0] - 2015-01-24
+## [1.3.0](https://github.com/gulpjs/glob-parent/compare/v1.2.0...v1.3.0) (2021-01-27)
 
-- add extglob tests
-- externalize exponent function
-- better whitespace handling
+## [1.2.0](https://github.com/gulpjs/glob-parent/compare/v1.1.0...v1.2.0) (2021-01-27)
 
-## [1.3.0] - 2015-01-24
 
-- make regex patterns explicity
+### Reverts
 
-## [1.1.0] - 2015-01-11
+* feat: make regex test strings smaller ([dc80fa9](https://github.com/gulpjs/glob-parent/commit/dc80fa9658dca20549cfeba44bbd37d5246fcce0))
 
-- don't create a match group with `makeRe`
+## [1.1.0](https://github.com/gulpjs/glob-parent/compare/v1.0.0...v1.1.0) (2021-01-27)
 
-## [1.0.0] - 2014-12-23
 
-- Merge commit '97b05f5544f8348736a8efaecf5c32bbe3e2ad6e'
-- support empty brace syntax
-- better bash coverage
-- better support for regex strings
+### Features
 
-## [0.1.4] - 2014-11-14
+* make regex test strings smaller ([cd83220](https://github.com/gulpjs/glob-parent/commit/cd832208638f45169f986d80fcf66e401f35d233))
 
-- improve recognition of bad args, recognize mismatched argument types
-- support escaping
-- remove pathname-expansion
-- support whitespace in patterns
+## 1.0.0 (2021-01-27)
 
-## [0.1.0]
-
-- first commit
-
-[2.3.2]: https://github.com/micromatch/braces/compare/2.3.1...2.3.2
-[2.3.1]: https://github.com/micromatch/braces/compare/2.3.0...2.3.1
-[2.3.0]: https://github.com/micromatch/braces/compare/2.2.1...2.3.0
-[2.2.1]: https://github.com/micromatch/braces/compare/2.2.0...2.2.1
-[2.2.0]: https://github.com/micromatch/braces/compare/2.1.1...2.2.0
-[2.1.1]: https://github.com/micromatch/braces/compare/2.1.0...2.1.1
-[2.1.0]: https://github.com/micromatch/braces/compare/2.0.4...2.1.0
-[2.0.4]: https://github.com/micromatch/braces/compare/2.0.3...2.0.4
-[2.0.3]: https://github.com/micromatch/braces/compare/2.0.2...2.0.3
-[2.0.2]: https://github.com/micromatch/braces/compare/2.0.1...2.0.2
-[2.0.1]: https://github.com/micromatch/braces/compare/2.0.0...2.0.1
-[2.0.0]: https://github.com/micromatch/braces/compare/1.8.5...2.0.0
-[1.8.5]: https://github.com/micromatch/braces/compare/1.8.4...1.8.5
-[1.8.4]: https://github.com/micromatch/braces/compare/1.8.0...1.8.4
-[1.8.0]: https://github.com/micromatch/braces/compare/1.6.0...1.8.0
-[1.6.0]: https://github.com/micromatch/braces/compare/1.5.0...1.6.0
-[1.5.0]: https://github.com/micromatch/braces/compare/1.4.0...1.5.0
-[1.4.0]: https://github.com/micromatch/braces/compare/1.3.0...1.4.0
-[1.3.0]: https://github.com/micromatch/braces/compare/1.2.0...1.3.0
-[1.2.0]: https://github.com/micromatch/braces/compare/1.1.0...1.2.0
-[1.1.0]: https://github.com/micromatch/braces/compare/1.0.0...1.1.0
-[1.0.0]: https://github.com/micromatch/braces/compare/0.1.4...1.0.0
-[0.1.4]: https://github.com/micromatch/braces/compare/0.1.0...0.1.4
-
-[Unreleased]: https://github.com/micromatch/braces/compare/0.1.0...HEAD
-[keep-a-changelog]: https://github.com/olivierlacan/keep-a-changelog
