@@ -1,32 +1,11 @@
-'use strict';
+'use strict'
 
-const utils = require('./utils');
+let Stringifier = require('./stringifier')
 
-module.exports = (ast, options = {}) => {
-  let stringify = (node, parent = {}) => {
-    let invalidBlock = options.escapeInvalid && utils.isInvalidBrace(parent);
-    let invalidNode = node.invalid === true && options.escapeInvalid === true;
-    let output = '';
+function stringify(node, builder) {
+  let str = new Stringifier(builder)
+  str.stringify(node)
+}
 
-    if (node.value) {
-      if ((invalidBlock || invalidNode) && utils.isOpenOrClose(node)) {
-        return '\\' + node.value;
-      }
-      return node.value;
-    }
-
-    if (node.value) {
-      return node.value;
-    }
-
-    if (node.nodes) {
-      for (let child of node.nodes) {
-        output += stringify(child);
-      }
-    }
-    return output;
-  };
-
-  return stringify(ast);
-};
-
+module.exports = stringify
+stringify.default = stringify
